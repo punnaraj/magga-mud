@@ -1,0 +1,23 @@
+{
+  "name": "magga-mud",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mutual Understanding Document workspace and static publication site for the PUNNARAJ project.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "dev": "node scripts/build-site.mjs --watch",
+    "serve": "python3 -m http.server 4173 -d dist",
+    "check": "node scripts/check-site.mjs"
+  },
+  "keywords": [
+    "mud",
+    "mutual-understanding-document",
+    "obsidian",
+    "markdown",
+    "punnaraj",
+    "github-pages",
+    "cloudflare-pages"
+  ],
+  "license": "UNLICENSED"
+}

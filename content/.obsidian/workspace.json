@@ -1,0 +1,17 @@
+{
+  "main": {
+    "id": "punaraj-mud-main",
+    "type": "split",
+    "children": []
+  },
+  "left": {
+    "id": "punaraj-mud-left",
+    "type": "split",
+    "children": []
+  },
+  "right": {
+    "id": "punaraj-mud-right",
+    "type": "split",
+    "children": []
+  }
+}

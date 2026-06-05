@@ -1,0 +1,149 @@
+:root {
+  color-scheme: light;
+  --bg: #f8f3e8;
+  --panel: #fffaf1;
+  --ink: #182235;
+  --muted: #657084;
+  --accent: #275efe;
+  --accent-2: #db7f38;
+  --border: #e4d7c2;
+  --shadow: 0 20px 60px rgb(39 43 54 / 12%);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff4d8, transparent 35rem), var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a.missing { color: #a33; border-bottom: 1px dashed currentColor; }
+
+.topbar {
+  align-items: center;
+  backdrop-filter: blur(14px);
+  background: rgb(255 250 241 / 82%);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.85rem clamp(1rem, 4vw, 3rem);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.menu-button { display: none; }
+
+.layout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 2rem clamp(1rem, 4vw, 3rem) 4rem;
+}
+
+.sidebar {
+  align-self: start;
+  background: rgb(255 250 241 / 75%);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  position: sticky;
+  top: 5rem;
+}
+
+.search-label { color: var(--muted); display: grid; font-size: 0.85rem; gap: 0.35rem; }
+input, textarea {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  color: var(--ink);
+  font: inherit;
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+}
+textarea { min-height: 16rem; resize: vertical; }
+nav { display: grid; gap: 0.35rem; margin-top: 1rem; }
+nav a { border-radius: 0.7rem; color: var(--ink); padding: 0.45rem 0.6rem; }
+nav a:hover { background: #f0e6d6; text-decoration: none; }
+
+main { display: grid; gap: 2rem; min-width: 0; }
+.note, .workspace {
+  background: rgb(255 250 241 / 86%);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  color: var(--accent-2);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 { line-height: 1.2; }
+h1 { font-size: clamp(2rem, 6vw, 4.2rem); margin: 0 0 1rem; }
+h2 { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; }
+.summary { color: var(--muted); font-size: 1.2rem; margin-bottom: 1.5rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.tags span {
+  background: #e9efff;
+  border: 1px solid #d6def8;
+  border-radius: 999px;
+  color: #26437a;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+}
+
+pre, code { background: #182235; border-radius: 0.5rem; color: #fff2d9; }
+code { padding: 0.1rem 0.35rem; }
+pre { overflow: auto; padding: 1rem; }
+pre.mermaid { background: #fff; border: 1px solid var(--border); color: var(--ink); }
+
+table { border-collapse: collapse; display: block; overflow-x: auto; width: 100%; }
+th, td { border: 1px solid var(--border); padding: 0.65rem; text-align: left; }
+th { background: #f3eadb; }
+
+.workspace-grid { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.4fr) minmax(14rem, 0.6fr); }
+.button-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.75rem; }
+button, .file-button {
+  background: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.7rem 1rem;
+}
+.file-button input { display: none; }
+[data-draft-list] { list-style: none; padding: 0; }
+[data-draft-list] li { border-bottom: 1px solid var(--border); display: grid; gap: 0.4rem; padding: 0.6rem 0; }
+[data-draft-list] .draft-actions { display: flex; gap: 0.4rem; }
+[data-draft-list] button { font-size: 0.8rem; padding: 0.35rem 0.65rem; }
+
+@media (max-width: 800px) {
+  .menu-button { display: inline-flex; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; position: static; }
+  .sidebar.open { display: block; }
+  .workspace-grid { grid-template-columns: 1fr; }
+}
