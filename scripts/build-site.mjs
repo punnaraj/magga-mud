@@ -212,7 +212,10 @@ async function build() {
   notes.sort((a, b) => a.url.localeCompare(b.url));
   const lookup = new Map();
   for (const note of notes) {
+    const relSlug = slugify(note.rel);
     lookup.set(note.slug, note);
+    lookup.set(relSlug, note);
+    lookup.set(relSlug.replace(/\/index$/, ''), note);
     lookup.set(path.basename(note.slug), note);
     lookup.set(slugify(note.title), note);
   }
