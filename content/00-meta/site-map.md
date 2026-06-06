@@ -1,13 +1,14 @@
 ---
 title: Site Map
 tags: [meta, navigation]
-summary: Index of the initial MUD vault.
+summary: Index of the public homepage and MUD vault.
 status: active
 ---
 
 # Site Map
 
-- [[../index|Home]]
+- [[../index|Public Home]]
+- [[../mud/index|MUD Workspace Home]]
 - [[../10-mud/project-charter|Project Charter]]
 - [[../10-mud/zero-date-preservation|Zero-Date Preservation]]
 - [[../20-architecture/publishing-architecture|Publishing Architecture]]
