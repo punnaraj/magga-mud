@@ -1,0 +1,9 @@
+{
+  "distill_generated_at" : "2026-06-07T03:10:32Z",
+  "public_safety" : "WWW and MUD projections are generated from manifest and distill metadata only; raw transcript text is excluded.",
+  "run_id" : "run-20260607T031032Z-cf2a7d7cb4fb",
+  "source_filename" : "genesis-macos-sample-export-2.json",
+  "source_sha256" : "cf2a7d7cb4fb8e2be7a3cbfe1a5a56423a2ade59d558e599121696ea90ca09a8",
+  "source_size" : "194",
+  "summary" : "One selected conversation export stream was preserved, normalized, and prepared for supervised PUNNARAJ first-layer processing. This v1 distill is deterministic and metadata-only; it does not publish raw conversation content."
+}
