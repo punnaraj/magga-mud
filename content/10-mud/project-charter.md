@@ -1,6 +1,6 @@
 ---
 title: Project Charter
-tags: [mud, charter, punaraj]
+tags: [mud, charter, punnaraj]
 summary: Defines why this repository exists and how it should be used.
 status: active
 ---
