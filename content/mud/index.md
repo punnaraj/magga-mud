@@ -1,6 +1,6 @@
 ---
 title: PUNNARAJ MUD Home
-tags: [home, mud, punaraj]
+tags: [home, mud, punnaraj]
 summary: Entry point for the PUNNARAJ Mutual Understanding Document workspace.
 status: active
 ---

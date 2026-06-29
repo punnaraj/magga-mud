@@ -21,19 +21,22 @@ const saveButton = document.querySelector('[data-save-draft]');
 const exportButton = document.querySelector('[data-export-draft]');
 const importInput = document.querySelector('[data-import-draft]');
 const draftList = document.querySelector('[data-draft-list]');
-const storageKey = 'punaraj-mud-drafts';
+const storageKey = 'punnaraj-mud-drafts';
+const legacyStorageKey = 'punaraj-mud-drafts';
 
 function slugify(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'untitled-note';
 }
 
 function readDrafts() {
-  try { return JSON.parse(localStorage.getItem(storageKey) || '[]'); }
+  const stored = localStorage.getItem(storageKey) ?? localStorage.getItem(legacyStorageKey) ?? '[]';
+  try { return JSON.parse(stored); }
   catch { return []; }
 }
 
 function writeDrafts(drafts) {
   localStorage.setItem(storageKey, JSON.stringify(drafts));
+  localStorage.removeItem(legacyStorageKey);
   renderDrafts();
 }
 
