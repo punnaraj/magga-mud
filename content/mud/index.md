@@ -17,6 +17,7 @@ This repository is the living **MUD — Mutual Understanding Document** for the 
 - [[10-mud/project-charter|Project Charter]] — what this project serves.
 - [[10-mud/zero-date-preservation|Zero-Date Preservation]] — the first memory and continuity rule.
 - [[20-architecture/publishing-architecture|Publishing Architecture]] — GitHub Pages, Cloudflare Pages, and secure workspace options.
+- [[20-architecture/local-tool-server-function-skeleton|Local Tool Server Function Skeleton]] — Telegram, logging, runtime, and cleanup function contracts.
 - [[40-memory/memory-graph|Memory Graph]] — how conversations, documents, and decisions connect.
 - [[30-workflows/human-workspace|Human Workspace]] — create, update, upload, delete, and publish flow.
 
