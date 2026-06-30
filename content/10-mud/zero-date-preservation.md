@@ -3,6 +3,9 @@ title: Zero-Date Preservation
 tags: [principle, continuity, memory]
 summary: First rule for protecting project continuity from day zero.
 status: active
+audience: public
+sensitivity: P0
+reviewed: 2026-06-30
 ---
 
 # Zero-Date Preservation

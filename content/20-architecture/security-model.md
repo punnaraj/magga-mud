@@ -1,36 +1,40 @@
 ---
-title: Security Model
-tags: [security, encryption, publishing]
-summary: Separates public publishing from private or encrypted collaboration.
-status: draft
+title: Publication Security Model
+tags: [security, classification, publishing]
+summary: Deny-by-default classification for GitHub Pages, Cloudflare Pages, and public R2.
+status: active
+audience: developer
+sensitivity: P1
+reviewed: 2026-06-30
 ---
 
-# Security Model
+# Publication Security Model
 
-The public site should never be treated as private storage. The safe model is to separate content into three classes.
+Public hosting is never private storage. Content is classified before build time, and an absent classification is an error.
 
-## Content classes
+## Information classes
 
-| Class | Location | Publishing | Notes |
-| --- | --- | --- | --- |
-| Public MUD | `content/` | Yes | Reviewed Markdown meant for public or team viewing. |
-| Draft local memory | Browser local storage or local files | No until exported/committed | Useful for quick capture. |
-| Sensitive memory | Encrypted object storage or private repo | No public plaintext | Client-side encryption before upload. |
+| Class | Meaning | GitHub developer | Cloudflare public | Public R2 |
+| --- | --- | --- | --- | --- |
+| P0 | Reviewed general information | Yes | Yes | When required |
+| P1 | Technical detail safe for unrestricted reading | Yes | No | Release artifacts only |
+| P2 | Restricted drafts, operational evidence, and private context | No | No | No |
+| P3 | Credentials, keys, cookies, password-vault material | Never | Never | Never |
 
-## Encryption direction
+## Build enforcement
 
-For encrypted cloud mode, prefer this pattern:
+- Every Markdown note declares `audience`, `sensitivity`, and `reviewed`.
+- Public notes must be P0.
+- Developer notes must be P1.
+- The public build excludes developer notes.
+- Checks reject merge markers, unresolved wiki links, transient metadata, and unsafe classification.
 
-```mermaid
-sequenceDiagram
-  participant Browser
-  participant PagesFn as Cloudflare Pages Function
-  participant Store as R2/D1 Storage
-  Browser->>Browser: Encrypt Markdown with user-held key
-  Browser->>PagesFn: Upload ciphertext + metadata
-  PagesFn->>Store: Store ciphertext only
-  Store-->>PagesFn: Return object id
-  PagesFn-->>Browser: Confirm save
-```
+## Storage boundary
 
-The server should not receive plaintext or long-lived decryption keys.
+The Zero Vault, raw private family material, credentials, `.env` files, browser state, ENPASS content, and archived worktrees stay outside all public paths.
+
+R2 object names and release manifests must not reveal restricted internal paths or identities.
+
+## Browser workspace
+
+The developer surface may store local drafts in browser storage. It does not write to GitHub or Cloudflare. Drafts must be exported, reviewed, classified, and committed before publication.

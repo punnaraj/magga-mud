@@ -3,6 +3,9 @@ title: PUNNARAJ MUD Home
 tags: [home, mud, punnaraj]
 summary: Entry point for the PUNNARAJ Mutual Understanding Document workspace.
 status: active
+audience: developer
+sensitivity: P1
+reviewed: 2026-06-30
 ---
 
 # PUNNARAJ Mutual Understanding Document

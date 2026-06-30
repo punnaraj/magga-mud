@@ -1,5 +1,6 @@
-name = "magga-mud"
-pages_build_output_dir = "dist"
+name = "magga-gen-001"
+account_id = "980f18dfaedc4a553a63ef52bb5facb4"
+pages_build_output_dir = "dist-public"
 compatibility_date = "2026-06-04"
 
 [vars]

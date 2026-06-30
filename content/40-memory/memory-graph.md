@@ -3,6 +3,9 @@ title: Memory Graph
 tags: [memory, graph, ai]
 summary: Connects conversations, decisions, architecture, and retrieval ideas.
 status: active
+audience: developer
+sensitivity: P1
+reviewed: 2026-06-30
 ---
 
 # Memory Graph

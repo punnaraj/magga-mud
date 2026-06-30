@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "audience": "public",
+  "sensitivity": "P0",
+  "status": "alpha",
+  "reviewed": "2026-06-30",
+  "navigation": [
+    { "label": "Purpose", "href": "#purpose" },
+    { "label": "Architecture", "href": "#architecture" },
+    { "label": "Alpha / Beta", "href": "#phases" },
+    { "label": "Evidence", "href": "#evidence" }
+  ],
+  "hero": {
+    "heading": "A recovery-first project for keeping knowledge usable over time.",
+    "summary": "PUNNARAJ is being built as a documented system for preserving project context, decisions, and recovery paths across people, machines, and tools.",
+    "primaryLink": { "label": "How the system works", "href": "#architecture" },
+    "secondaryLink": { "label": "Developer alpha", "href": "https://punnaraj.github.io/magga-mud/" },
+    "steps": [
+      { "number": "1", "title": "Human authority", "detail": "A person records knowledge and decisions." },
+      { "number": "2", "title": "Reviewed source", "detail": "Content is written, reviewed, and attributed." },
+      { "number": "3", "title": "Verification", "detail": "Claims, files, and links are checked." },
+      { "number": "4", "title": "Publication", "detail": "Reviewed projections are published with change history." },
+      { "number": "5", "title": "Recovery", "detail": "Knowledge remains findable and restorable." }
+    ]
+  },
+  "why": [
+    { "title": "Context loss", "body": "Files can survive while decisions, assumptions, and reasons are forgotten or separated from them." },
+    { "title": "Changing platforms", "body": "Devices, services, file formats, and AI tools change. Durable source and documented recovery paths reduce dependence on one platform." },
+    { "title": "Public / private boundaries", "body": "Some knowledge can be public, some must remain private, and some should be shared selectively. The boundary must be explicit." }
+  ],
+  "architecture": {
+    "heading": "One reviewed source, two public surfaces.",
+    "summary": "Git is the record. Each publication is a controlled projection of the same reviewed source.",
+    "sourceSteps": ["Human review", "Markdown + Git", "Build + checks"],
+    "surfaces": [
+      { "name": "GitHub Pages", "role": "public developer alpha" },
+      { "name": "Cloudflare Pages", "role": "curated public alpha" }
+    ],
+    "artifactFlow": ["Release manifest", "R2 — immutable PUNNARAJ-authored artifacts"],
+    "privateBoundary": "Zero Vault + private evidence — never public",
+    "privateDetail": "Excluded from public builds, repositories, and artifact storage.",
+    "databaseDecision": "D1 is deferred until dynamic state is required."
+  },
+  "phases": {
+    "heading": "Alpha now. Beta after evidence.",
+    "alpha": [
+      "Structure and copy may change",
+      "Developer record is inspectable",
+      "Known gaps stay visible",
+      "Private material is excluded"
+    ],
+    "beta": [
+      "Every note classified",
+      "Both builds reject unsafe content",
+      "Accessibility and mobile QA pass",
+      "Release hashes match R2",
+      "Rollback and recovery are tested",
+      "Human boundary review is complete"
+    ],
+    "timeline": [
+      { "name": "Alpha", "detail": "testing structure and procedure" },
+      { "name": "Beta", "detail": "tested publication contract" },
+      { "name": "Later", "detail": "stable releases" }
+    ]
+  },
+  "evidence": {
+    "heading": "What is verified today",
+    "observed": "Observed 30 June 2026",
+    "verified": [
+      "Markdown publication builds and checks",
+      "Recovery-media factory v0.2.0",
+      "Strict verification: 0 failures, 0 warnings",
+      "Portable FAT32 payload mounted read-only",
+      "Target-specific Ubuntu hashes pinned"
+    ],
+    "limitsHeading": "What is not proven yet",
+    "limits": [
+      "No single image boots every hardware family",
+      "No physical recovery-media burn test",
+      "Orange Pi and M5Stack need exact models",
+      "Private family material is not public",
+      "Alpha URLs and schemas may change"
+    ]
+  },
+  "links": [
+    { "label": "Source repository", "href": "https://github.com/punnaraj/magga-mud" },
+    { "label": "Developer alpha", "href": "https://punnaraj.github.io/magga-mud/" },
+    { "label": "Release checksums", "href": "https://pub-b82f1c5d26054e4790b28a41fcf8d30b.r2.dev/manifests/public-alpha-v0.1.0.json" },
+    { "label": "Known gaps", "href": "80-status/alpha-status.html" }
+  ],
+  "disclaimer": "This page reports current evidence and design decisions. It is not a claim of completion."
+}

@@ -3,6 +3,9 @@ title: Project Charter
 tags: [mud, charter, punnaraj]
 summary: Defines why this repository exists and how it should be used.
 status: active
+audience: public
+sensitivity: P0
+reviewed: 2026-06-30
 ---
 
 # Project Charter

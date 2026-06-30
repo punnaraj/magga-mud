@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "punnaraj-public-alpha-v0.1.0",
+  "phase": "alpha",
+  "visibility": "public",
+  "published": "2026-06-30",
+  "source": {
+    "repository": "https://github.com/punnaraj/magga-mud",
+    "ref": "refs/tags/public-alpha-v0.1.0"
+  },
+  "artifactStore": {
+    "provider": "cloudflare-r2",
+    "bucket": "punnaraj-public-artifacts",
+    "publicBaseUrl": "https://pub-b82f1c5d26054e4790b28a41fcf8d30b.r2.dev"
+  },
+  "artifacts": [
+    {
+      "id": "punnaraj-recovery-payload-v0.2.0",
+      "filename": "punnaraj-recovery-payload-v0.2.0.img.gz",
+      "byteSize": 848519,
+      "sha256": "1fa4f64fb484f5c8cec73bc952a993d5e310e384cfd3d9c1b7d58709da6a75aa",
+      "mediaType": "application/gzip",
+      "compression": "gzip",
+      "bootableOperatingSystem": false,
+      "objectKey": "releases/recovery-payload/v0.2.0/1fa4f64fb484f5c8cec73bc952a993d5e310e384cfd3d9c1b7d58709da6a75aa/punnaraj-recovery-payload-v0.2.0.img.gz",
+      "publicUrl": "https://pub-b82f1c5d26054e4790b28a41fcf8d30b.r2.dev/releases/recovery-payload/v0.2.0/1fa4f64fb484f5c8cec73bc952a993d5e310e384cfd3d9c1b7d58709da6a75aa/punnaraj-recovery-payload-v0.2.0.img.gz",
+      "expanded": {
+        "filename": "punnaraj-recovery-payload-v0.2.0.img",
+        "byteSize": 335544320,
+        "sha256": "66acb8b28d9bfb5bd858c24a7f7a96a1eb8d9c33f84c427d453ca3cc7cf613ba"
+      },
+      "purpose": "Cross-platform FAT32 PUNNARAJ recovery-agent payload; not an operating-system boot image"
+    }
+  ],
+  "upstreamDependencies": [
+    {
+      "id": "ubuntu-amd64-live-server",
+      "version": "26.04",
+      "filename": "ubuntu-26.04-live-server-amd64.iso",
+      "sha256": "dec49008a71f6098d0bcfc822021f4d042d5f2db279e4d75bdd981304f1ca5d9",
+      "url": "https://releases.ubuntu.com/26.04/ubuntu-26.04-live-server-amd64.iso",
+      "mirroredToPublicR2": false
+    },
+    {
+      "id": "ubuntu-raspi-arm64-server",
+      "version": "26.04",
+      "filename": "ubuntu-26.04-preinstalled-server-arm64+raspi.img.xz",
+      "sha256": "10604098a0c4eeb7359e58e12b01badbce8c74b0d53b414e633ba0b047b512cd",
+      "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04/release/ubuntu-26.04-preinstalled-server-arm64+raspi.img.xz",
+      "mirroredToPublicR2": false
+    },
+    {
+      "id": "ubuntu-arm64-preinstalled",
+      "version": "26.04",
+      "filename": "ubuntu-26.04-preinstalled-server-arm64.img.xz",
+      "sha256": "aaa7431beb07aded27664c11c913a66b1764b54538967dfb8d2b3b34d961dd7e",
+      "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04/release/ubuntu-26.04-preinstalled-server-arm64.img.xz",
+      "mirroredToPublicR2": false
+    },
+    {
+      "id": "ubuntu-amd64-wsl",
+      "version": "26.04",
+      "filename": "ubuntu-26.04-wsl-amd64.wsl",
+      "sha256": "96c7f5fb28a7fe28245331f9bfbe4375f18dd29a4850116ad3c4f60f6700c55c",
+      "url": "https://releases.ubuntu.com/26.04/ubuntu-26.04-wsl-amd64.wsl",
+      "mirroredToPublicR2": false
+    }
+  ],
+  "exclusions": [
+    "Zero Vault and private family material",
+    "credentials, keys, cookies, and environment files",
+    "ENPASS content",
+    "archived worktrees and raw operational evidence",
+    "upstream Ubuntu image bytes"
+  ]
+}

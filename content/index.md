@@ -3,6 +3,9 @@ title: PUNNARAJ Public Home
 tags: [home, public, punnaraj]
 summary: Public introduction to PUNNARAJ and the living MUD workspace.
 status: active
+audience: public
+sensitivity: P0
+reviewed: 2026-06-30
 ---
 
 # PUNNARAJ

@@ -1,57 +1,79 @@
 # magga-mud
 
-MUD — **Mutual Understanding Document** — workspace and publication site for the PUNNARAJ project.
+MUD — **Mutual Understanding Document** — workspace and dual publication source for the PUNNARAJ project.
 
-This repository keeps project memory in an Obsidian-friendly Markdown vault and publishes it as a static website for GitHub Pages or Cloudflare Pages.
+One reviewed source produces two public surfaces:
+
+- GitHub Pages: complete public-safe developer alpha (`P0` + `P1`).
+- Cloudflare Pages: curated public alpha (`P0` only).
+
+Private evidence, credentials, and the Zero Vault are not publication inputs.
 
 ## Repository shape
 
 ```text
-content/              Markdown vault; open this folder in Obsidian
-src/                  Static site styles and browser workspace script
-scripts/              Build and verification scripts
-dist/                 Generated site output; created by npm run build
-.github/workflows/    GitHub Pages deployment workflow
+content/                  Classified Markdown and public-home data
+docs/design-concepts/     Accepted visual specifications
+src/                      Shared styles and browser behavior
+scripts/                  Dual builders and publication checks
+dist-public/              Generated Cloudflare Pages output
+dist-developer/           Generated GitHub Pages output
+.github/workflows/        GitHub Pages developer deployment
+wrangler.toml             Cloudflare Pages public deployment
 ```
 
-## Quick start
+## Build and verify
 
 ```bash
 npm run build
 npm run check
-npm run serve
 ```
 
-Then open <http://localhost:4173>.
+Run either surface locally:
 
-## Editing workflow
+```bash
+npm run serve
+npm run serve:developer
+```
 
-1. Create or update Markdown files in `content/`.
-2. Use wiki links like `[[10-mud/project-charter|Project Charter]]` to connect notes.
-3. Run `npm run build` to generate `dist/`.
-4. Commit and push. GitHub Pages can publish automatically from the included workflow.
+The public surface uses port 4173 and the developer surface uses port 4174.
 
-## Browser workspace
+## Publication classification
 
-The generated site includes a local browser workspace for quick capture:
+Every Markdown note must declare:
 
-- create drafts
-- update drafts
-- import Markdown files
-- delete local drafts
-- export `.md` files for commit
+```yaml
+audience: public
+sensitivity: P0
+reviewed: 2026-06-30
+```
 
-Drafts remain in browser storage until exported. Static hosting cannot safely write directly to Git without an authenticated backend, so this starter keeps publication deliberate.
+or:
 
-## Cloudflare Pages
+```yaml
+audience: developer
+sensitivity: P1
+reviewed: 2026-06-30
+```
 
-Create a Cloudflare Pages project with:
+The builder rejects missing or mismatched classification. Public builds include only `P0`; developer builds include `P0` and `P1`.
 
-- Build command: `npm run build`
-- Build output directory: `dist`
+## Deployment
 
-The included `wrangler.toml` records the same output directory.
+GitHub Actions builds `dist-developer/` from `main` and publishes it through GitHub Pages.
 
-## Security model
+Cloudflare Pages project `magga-gen-001` publishes `dist-public/`. Direct alpha preview:
 
-Public Markdown belongs in `content/`. Sensitive notes should stay outside public publishing or be stored only as client-side encrypted ciphertext in a future Cloudflare Pages Function plus R2/D1 workflow.
+```bash
+npm run build:public
+npx wrangler pages deploy dist-public --project-name magga-gen-001 --branch public-alpha
+```
+
+## Storage decision
+
+- GitHub owns source, metadata, history, checks, and release manifests.
+- Cloudflare Pages owns the curated public rendering.
+- A dedicated R2 bucket stores immutable PUNNARAJ-authored release artifacts.
+- D1 is deferred until dynamic state is required.
+
+Upstream Ubuntu images are not duplicated into public R2 during alpha. Private and restricted material must never be uploaded to public GitHub, Pages, or R2.

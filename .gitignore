@@ -1,4 +1,7 @@
 node_modules/
 dist/
+dist-public/
+dist-developer/
 artifacts/
+.wrangler/
 .DS_Store

@@ -2,7 +2,7 @@ name: Publish GitHub Pages
 
 on:
   push:
-    branches: [main, work]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -25,11 +25,13 @@ jobs:
         with:
           node-version: 22
       - name: Build
-        run: npm run build
+        run: npm run build:developer
+      - name: Verify both publication surfaces
+        run: npm run build:public && npm run check
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist-developer
   deploy:
     environment:
       name: github-pages

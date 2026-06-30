@@ -3,6 +3,9 @@ title: Human Workspace
 tags: [workflow, workspace, crud]
 summary: How humans create, update, import, delete, and publish MUD files.
 status: active
+audience: developer
+sensitivity: P1
+reviewed: 2026-06-30
 ---
 
 # Human Workspace

@@ -5,10 +5,14 @@
   "description": "Mutual Understanding Document workspace and static publication site for the PUNNARAJ project.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-site.mjs",
-    "dev": "node scripts/build-site.mjs --watch",
-    "serve": "python3 -m http.server 4173 -d dist",
-    "check": "node scripts/check-site.mjs"
+    "build": "npm run build:public && npm run build:developer",
+    "build:public": "PUBLICATION_SURFACE=public node scripts/build-site.mjs",
+    "build:developer": "PUBLICATION_SURFACE=developer node scripts/build-site.mjs",
+    "dev": "PUBLICATION_SURFACE=public node scripts/build-site.mjs --watch",
+    "serve": "python3 -m http.server 4173 -d dist-public",
+    "serve:developer": "python3 -m http.server 4174 -d dist-developer",
+    "check": "node scripts/check-site.mjs && node scripts/check-release.mjs",
+    "check:release": "node scripts/check-release.mjs"
   },
   "keywords": [
     "mud",

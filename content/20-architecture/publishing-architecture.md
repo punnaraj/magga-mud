@@ -1,49 +1,57 @@
 ---
 title: Publishing Architecture
-tags: [architecture, github-pages, cloudflare-pages, security]
-summary: Deployment and storage model for a Markdown-first MUD site.
-status: draft
+tags: [architecture, github-pages, cloudflare-pages, r2]
+summary: One reviewed source produces separate developer and public projections.
+status: active
+audience: developer
+sensitivity: P1
+reviewed: 2026-06-30
 ---
 
 # Publishing Architecture
 
-The repository is designed around a simple path:
+The alpha uses one canonical source and two intentionally different public renderings.
 
 ```mermaid
 flowchart LR
-  A[Markdown vault in content/] --> B[Static site builder]
-  B --> C[dist/]
-  C --> D[GitHub Pages]
-  C --> E[Cloudflare Pages]
-  A --> F[Obsidian workspace]
-  G[Browser workspace] --> A
+  H[Human review] --> G[Markdown and Git]
+  G --> B[Dual build and checks]
+  B --> GH[GitHub Pages developer alpha]
+  B --> CF[Cloudflare Pages public alpha]
+  G --> M[Release manifest]
+  M --> R2[Public R2 release artifacts]
+  Z[Zero Vault and private evidence] -. excluded .-> B
 ```
 
-## Publication targets
+## GitHub Pages
 
-### GitHub Pages
+GitHub Pages publishes the developer build from `dist-developer/`. It contains every classified P0 and P1 note, build logic, architecture, release metadata, and known gaps.
 
-The GitHub Actions workflow builds the `content/` vault into `dist/` and publishes it with Pages. This is the simplest public publishing path.
+The Git repository is the canonical metadata and change-history layer.
 
-### Cloudflare Pages
+## Cloudflare Pages
 
-Cloudflare Pages can run the same build command:
+Cloudflare Pages publishes `dist-public/`. It contains only P0 material and the curated project explanation.
 
-```bash
-npm run build
+Cloudflare's Git integration and preview deployments support branch-specific previews without replacing the production deployment. Preview URLs are not canonical.
+
+## R2
+
+R2 stores immutable PUNNARAJ-authored artifacts listed by a release manifest. Git stores the metadata; R2 stores the bytes.
+
+Proposed object keys:
+
+```text
+releases/<artifact>/<version>/<sha256>/<filename>
+manifests/<release-id>.json
 ```
 
-and publish the `dist` directory. The included `wrangler.toml` documents the expected project settings.
+Upstream operating-system images remain referenced by official URL and checksum during alpha rather than copied into public R2.
 
-## Secure workspace options
+## D1
 
-Static hosting alone cannot safely write files back to the repository. For human create/update/upload/delete operations, use one of these modes:
+D1 is deferred. Static content and release metadata do not yet require a second database. A dedicated database may be added later for verified dynamic requirements such as submissions, approval state, or queryable release status.
 
-1. **Local-first Git mode** — edit Markdown locally in Obsidian or any editor, then commit and push.
-2. **Browser draft mode** — use the included site workspace to draft notes in local browser storage, then export Markdown files for commit.
-3. **Encrypted cloud mode** — add a Cloudflare Pages Function that encrypts note payloads client-side before storage in Cloudflare R2 or D1. Keep encryption keys outside the server so the storage provider only sees ciphertext.
-4. **Repository PR mode** — use GitHub OAuth or a fine-scoped GitHub App to create pull requests instead of directly writing to the default branch.
+## Release rule
 
-## Recommendation
-
-Start with local-first Git mode plus browser draft mode. Add encrypted cloud mode only when multiple humans need live web editing from untrusted devices.
+One commit must produce both surfaces. Each generated `release.json` records the source commit, source date, surface, classification set, and note count.
